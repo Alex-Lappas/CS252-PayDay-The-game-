@@ -1,0 +1,429 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "mvc.model.position.start"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_104069929 { 
+   	label=model
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_901254734 { 
+   	label=position
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   BothPlayersDicePosition1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BothPlayersDicePosition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, dice_number1: int, dice_number2: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CardPosition1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CardPosition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getCards(b: Board, p: Player, c: Card)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Casino1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Casino</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, dice_number: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, dice_number: int, j: Jackpot)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DicePosition1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DicePosition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   dice_number: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   money: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OnePlayerDicePosition1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OnePlayerDicePosition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, dice_number: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PayDay1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PayDay</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ performAction(p: Player, m: MyMonth, b: Board)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Position1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Position</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   day: Days [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   image: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   position_on_table: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ checkSunday(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkThursday(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RadioContest1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RadioContest</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ performAction(p: Player, dice_number1: int, dice_number2: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+YardSale1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)YardSale</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, dice_number: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, b: Board, diceNumber: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+buyer1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)buyer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ performAction(p: Player, choice: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+deal_position1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)deal_position</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   choice: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getCards(b: Board, p: Player, c: Card)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+lottery_ticket1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)lottery_ticket</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># performAction(p: Player, choice1: int, choice2: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+mail_position1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)mail_position</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   money: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pick_number: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getCards(b: Board, p: Player, c: Card)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+start1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)start</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+sweep1995935458[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)sweep</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ performAction(p: Player, dice_number: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_3619493 { 
+   	label=view
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   View1219404857[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)View</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   Bills1Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Bills2Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DealCards: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DealCards1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DealCards2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Dice1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Dice2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DiceImage1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DiceImage2: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   EndTurn1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   EndTurn2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   GetLoan1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   GetLoan2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   InfoBox: JDesktopPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Loan1Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Loan2Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MailCards: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Money1Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Money2Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   PayDayImage: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   PlayerName1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   PlayerName2: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   action: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   basic_panel: JLayeredPaneExtension [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cldr: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   command: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   game: Controller [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   height: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   image: Image [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imageURL: URL [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   info_header: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ins: ImageIcon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jackPotLabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jackPotPanel: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jackPotText: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   monthsLeft: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   p1_info: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   p2_info: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pawn1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pawn_position: JLayeredPaneExtension[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player1: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player2: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   position: JDesktopPane[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rand_pawn: Image [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   randmess: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenSize: Dimension [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tabletop: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   to_scale: Image [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   turn: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   width: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ SetDetails()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ShowCrypto(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actionOnPosition(pos: int, p: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ chain_reaction_crypto(outcome: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ chain_reaction_football(outcome: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dice_update(dice_roll: int, p: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getScaledImage(srcImg: Image, w: int, h: int): ImageIcon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showDealCard(c: deal_card): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showFootballGame(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showMailCard(c: mail_card): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showWinningMessage(p1: Player, p2: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateInfoBox()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateInfoPlayers()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updatePawn(pos: int, player_id: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update_jackpot()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_637428636 { 
+   	label=controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Controller56799696[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   GameStarted: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   Score1: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   Score2: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   board: Board [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cldr: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   jackpot: Jackpot [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   player1: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   player2: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   rounds: MyMonth [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   tabletop: Position[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ MailCardIn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkIfGameFinished(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dealCardIn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initialize_tabletop()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ randomTurnGen()</TD></TR>
+<TR><TD ALIGN="LEFT" ># randomize(array: Position[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFile(path: String, type: String): String[][]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+BothPlayersDicePosition1995935458 -> RadioContest1995935458[arrowhead=none, arrowtail=empty, dir=both];
+BothPlayersDicePosition1995935458 -> lottery_ticket1995935458[arrowhead=none, arrowtail=empty, dir=both];
+CardPosition1995935458 -> deal_position1995935458[arrowhead=none, arrowtail=empty, dir=both];
+CardPosition1995935458 -> mail_position1995935458[arrowhead=none, arrowtail=empty, dir=both];
+Controller56799696 -> Position1995935458[label="tabletop
+[0..*]"];
+DicePosition1995935458 -> BothPlayersDicePosition1995935458[arrowhead=none, arrowtail=empty, dir=both];
+DicePosition1995935458 -> OnePlayerDicePosition1995935458[arrowhead=none, arrowtail=empty, dir=both];
+OnePlayerDicePosition1995935458 -> Casino1995935458[arrowhead=none, arrowtail=empty, dir=both];
+OnePlayerDicePosition1995935458 -> YardSale1995935458[arrowhead=none, arrowtail=empty, dir=both];
+OnePlayerDicePosition1995935458 -> sweep1995935458[arrowhead=none, arrowtail=empty, dir=both];
+Position1995935458 -> CardPosition1995935458[arrowhead=none, arrowtail=empty, dir=both];
+Position1995935458 -> DicePosition1995935458[arrowhead=none, arrowtail=empty, dir=both];
+Position1995935458 -> PayDay1995935458[arrowhead=none, arrowtail=empty, dir=both];
+Position1995935458 -> buyer1995935458[arrowhead=none, arrowtail=empty, dir=both];
+Position1995935458 -> start1995935458[arrowhead=none, arrowtail=empty, dir=both];
+View1219404857 -> Controller56799696[label="game
+[0..1]"];
+    
+}
+@enduml

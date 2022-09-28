@@ -1,0 +1,434 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "mvc.model.card.Card"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_104069929 { 
+   	label=model
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Player861289451[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Player</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   bills: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dice_roll: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hasFinished: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hasStarted: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   loan: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   money: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   month: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   opponent: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   player_cards: ArrayList&lt;Card&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player_name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   position: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   turn: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ GetTurn(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Roll_the_dice(j: Jackpot)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addCards(card: Card)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ buyDealCard(c: deal_card)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkIfFinished(m: MyMonth, p: Player): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ end_turn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ forced_loan(increase: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get_loan(increase: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ money_addition(money_increase: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ money_subtraction(money_decrease: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ movePosition(steps: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pay_loan(money: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sell_deal_card(choice: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update_month()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+subgraph cluster_2059291317 { 
+   	label=card
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Advertisement1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Advertisement</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Bill1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Bill</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Card1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Card</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   image: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   popup_msg: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Charity1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Charity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ action(p: Player, j: Jackpot)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GetMoneyFromNeighbor1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GetMoneyFromNeighbor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MoveToSpecifiedSpot1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MoveToSpecifiedSpot</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player, arr: Position[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PayTheNeighbor1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PayTheNeighbor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+deal_card1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)deal_card</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   buy_cost: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sell_cost: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ player_action(p: Player)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+mail_card1365062985[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)mail_card</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   money: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_587000863 { 
+   	label=board
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Board633242675[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Board</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   current_day: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   current_dice_roll: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   dealCards: ArrayList&lt;deal_card&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   mailCards: ArrayList&lt;mail_card&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   outcome: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   played_cards: ArrayList&lt;Card&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   trash: ArrayList&lt;Card&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ TakeDealCard(): deal_card</TD></TR>
+<TR><TD ALIGN="LEFT" >+ TakeMailCard(p: Player): mail_card</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addDealCard(c: deal_card)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addMailCard(c: mail_card)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ crypto(p: Player, choice: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ football(p: Player, choice: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ play_card(c: Card)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ replace_cards(played_cards: ArrayList&lt;Card&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_3619493 { 
+   	label=view
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   View1219404857[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)View</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   Bills1Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Bills2Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DealCards: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DealCards1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DealCards2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Dice1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Dice2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DiceImage1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   DiceImage2: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   EndTurn1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   EndTurn2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   GetLoan1: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   GetLoan2: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   InfoBox: JDesktopPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Loan1Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Loan2Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   MailCards: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Money1Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Money2Text: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   PayDayImage: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   PlayerName1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   PlayerName2: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   action: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   basic_panel: JLayeredPaneExtension [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cldr: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   command: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   game: Controller [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   height: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   image: Image [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imageURL: URL [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   info_header: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ins: ImageIcon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jackPotLabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jackPotPanel: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jackPotText: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   monthsLeft: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   p1_info: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   p2_info: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pawn1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pawn_position: JLayeredPaneExtension[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player1: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player2: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   position: JDesktopPane[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   rand_pawn: Image [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   randmess: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenSize: Dimension [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tabletop: JLayeredPane [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   to_scale: Image [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   turn: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   width: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ SetDetails()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ShowCrypto(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actionOnPosition(pos: int, p: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ chain_reaction_crypto(outcome: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ chain_reaction_football(outcome: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dice_update(dice_roll: int, p: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getScaledImage(srcImg: Image, w: int, h: int): ImageIcon</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showDealCard(c: deal_card): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showFootballGame(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showMailCard(c: mail_card): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showWinningMessage(p1: Player, p2: Player)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateInfoBox()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateInfoPlayers()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updatePawn(pos: int, player_id: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update_jackpot()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_637428636 { 
+   	label=controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Controller56799696[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   GameStarted: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   Score1: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   Score2: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   board: Board [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cldr: ClassLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   jackpot: Jackpot [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   player1: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   player2: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   rounds: MyMonth [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   tabletop: Position[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ MailCardIn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkIfGameFinished(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dealCardIn()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initialize_tabletop()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ randomTurnGen()</TD></TR>
+<TR><TD ALIGN="LEFT" ># randomize(array: Position[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFile(path: String, type: String): String[][]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Board633242675 -> Card1365062985[label="played_cards
+[0..*]"];
+Board633242675 -> Card1365062985[label="trash
+[0..*]"];
+Board633242675 -> deal_card1365062985[label="dealCards
+[0..*]"];
+Board633242675 -> mail_card1365062985[label="mailCards
+[0..*]"];
+Card1365062985 -> deal_card1365062985[arrowhead=none, arrowtail=empty, dir=both];
+Card1365062985 -> mail_card1365062985[arrowhead=none, arrowtail=empty, dir=both];
+Controller56799696 -> Board633242675[label="board
+[0..1]"];
+Controller56799696 -> Player861289451[label="player1
+[0..1]"];
+Controller56799696 -> Player861289451[label="player2
+[0..1]"];
+Player861289451 -> Card1365062985[label="player_cards
+[0..*]"];
+View1219404857 -> Controller56799696[label="game
+[0..1]"];
+mail_card1365062985 -> Advertisement1365062985[arrowhead=none, arrowtail=empty, dir=both];
+mail_card1365062985 -> Bill1365062985[arrowhead=none, arrowtail=empty, dir=both];
+mail_card1365062985 -> Charity1365062985[arrowhead=none, arrowtail=empty, dir=both];
+mail_card1365062985 -> GetMoneyFromNeighbor1365062985[arrowhead=none, arrowtail=empty, dir=both];
+mail_card1365062985 -> MoveToSpecifiedSpot1365062985[arrowhead=none, arrowtail=empty, dir=both];
+mail_card1365062985 -> PayTheNeighbor1365062985[arrowhead=none, arrowtail=empty, dir=both];
+    
+}
+@enduml
